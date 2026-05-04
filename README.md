@@ -24,7 +24,7 @@ Built for the **Youth Nexus Cyber AI Challenge — 1st Edition** | ENSA Kénitra
 |---|---|---|
 | **Salma Ouaya** | Data Engineer & ML Core | D + M |
 | **Hiba Chaoui** | Backend Engineer (FastAPI + XAI) | A |
-| **Abdoule Hady** | Frontend & Présentation (Streamlit + Rapport) | U |
+| **Abdoule Hady** | Frontend Engineer (Streamlit + Rapport) | U |
 
 ---
 
