@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field, field_validator
-from typing import Dict, List, Tuple
+from typing import Dict, List
 import numpy as np
 
 CICIDS_FEATURES = [
@@ -26,6 +26,11 @@ CICIDS_FEATURES = [
     "Idle Std", "Idle Max", "Idle Min"
 ]
 
+class FeatureImportance(BaseModel):
+    """One SHAP feature contribution."""
+    feature: str
+    shap_value: float
+
 class NetworkFlowInput(BaseModel):
     features: Dict[str, float]
 
@@ -34,10 +39,11 @@ class NetworkFlowInput(BaseModel):
     def validate_features(cls, v):
         missing = set(CICIDS_FEATURES) - set(v.keys())
         if missing:
-            raise ValueError(f"Missing features: {missing}")
+            raise ValueError(f"Missing {len(missing)} feature(s): {sorted(missing)[:3]}...")
         return v
 
     def to_array(self) -> np.ndarray:
+        """Returns features in correct CICIDS order, shape (1, 78)."""
         return np.array([[self.features[f] for f in CICIDS_FEATURES]])
 
 class ThreatPredictionOutput(BaseModel):
@@ -46,4 +52,4 @@ class ThreatPredictionOutput(BaseModel):
     severity: str = Field(..., pattern="^(LOW|MEDIUM|HIGH|CRITICAL)$")
     is_anomaly: bool
     anomaly_score: float
-    top_features: List[Tuple[str, float]]
+    top_features: List[FeatureImportance]

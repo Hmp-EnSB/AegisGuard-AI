@@ -7,16 +7,16 @@ from api.routes.predict_threat import router as threat_router
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Startup: load models
-    print("🚀 Loading models...")
+    print("[STARTUP] Loading models...")
     try:
         load_all_models()
-        print("✓ All models loaded successfully")
+        print("[OK] All models loaded successfully")
     except Exception as e:
-        print(f"✗ Model loading failed: {e}")
+        print(f"[ERROR] Model loading failed: {e}")
         raise
     yield
     # Shutdown: cleanup if needed
-    print("🛑 Shutting down...")
+    print("[SHUTDOWN] Shutting down...")
 
 app = FastAPI(
     title="AegisGuard API",
