@@ -28,7 +28,7 @@ from components.shap_display import display_shap
 from components.kpi import show_kpis
 
 # ── Constants ──────────────────────────────────────────────────────────────────
-API_BASE = "http://localhost:8000"
+API_BASE = "https://hardened-hash-unworldly.ngrok-free.dev/health"
 
 THREAT_ICONS = {
     "BENIGN": "✅", "DDoS": "🔴", "PortScan": "🔍", "Bot": "🤖",
