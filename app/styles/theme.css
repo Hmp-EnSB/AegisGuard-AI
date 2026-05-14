@@ -1,9 +1,248 @@
-body {
-    background-color: #0e1117;
-    color: #ffffff;
+/* ─── AegisGuard SOC Dark Theme ─────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Syne:wght@400;600;800&display=swap');
+
+/* ── Root variables ── */
+:root {
+    --bg-primary: #0e1117;
+    --bg-secondary: #161b27;
+    --bg-card: #1a2035;
+    --border: #2d3748;
+    --text-primary: #e2e8f0;
+    --text-muted: #94a3b8;
+    --accent-blue: #3b82f6;
+    --accent-cyan: #06b6d4;
+    --red: #ef4444;
+    --orange: #f97316;
+    --amber: #f59e0b;
+    --green: #22c55e;
 }
 
-.stButton>button {
-    background-color: #1f77b4;
+/* ── Base ── */
+body, .stApp {
+    background-color: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+    font-family: 'Syne', sans-serif;
+}
+
+/* ── Header ── */
+.aegis-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0 1rem;
+    text-align: center;
+}
+
+.aegis-logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+}
+
+.brand {
+    background: linear-gradient(135deg, #06b6d4, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.aegis-subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 0.25rem;
+}
+
+/* ── API Status badges ── */
+.status-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    text-align: center;
+    margin: 0.5rem auto;
+    max-width: 600px;
+}
+
+.status-online  { background: #0d2818; border: 1px solid var(--green);  color: var(--green); }
+.status-offline { background: #2d0808; border: 1px solid var(--red);    color: var(--red); }
+.status-warn    { background: #2d1f00; border: 1px solid var(--amber);  color: var(--amber); }
+
+/* ── Divider ── */
+.divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 1rem 0;
+}
+
+/* ── Decision banners ── */
+.decision-banner {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 1rem 0 0.5rem;
+    letter-spacing: 0.05em;
+}
+
+.banner-fraud {
+    background: #2d08081a;
+    border: 2px solid var(--red);
+    color: var(--red);
+    animation: pulse-red 2s infinite;
+}
+
+.banner-legit {
+    background: #0d28181a;
+    border: 2px solid var(--green);
+    color: var(--green);
+}
+
+@keyframes pulse-red {
+    0%, 100% { box-shadow: 0 0 8px #ef444455; }
+    50% { box-shadow: 0 0 20px #ef444488; }
+}
+
+/* ── Threat class banner ── */
+.threat-banner {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    border: 2px solid;
+    background: #1a2035;
+    color: var(--text-primary);
+    margin: 1rem 0 0.5rem;
+}
+
+/* ── Severity badge ── */
+.severity-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 0.35rem 1rem;
+    border-radius: 20px;
+    color: #fff;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+/* ── Tabs ── */
+.stTabs [data-baseweb="tab-list"] {
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 4px;
+    gap: 4px;
+}
+
+.stTabs [data-baseweb="tab"] {
+    border-radius: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    padding: 0.5rem 1rem;
+}
+
+.stTabs [aria-selected="true"] {
+    background-color: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border);
+}
+
+/* ── Buttons ── */
+.stButton > button {
+    background: linear-gradient(135deg, #1d4ed8, #2563eb);
     color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease;
+}
+
+.stButton > button:hover {
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    box-shadow: 0 0 16px #3b82f644;
+    transform: translateY(-1px);
+}
+
+/* ── Inputs ── */
+.stNumberInput input, .stSlider, .stSelectbox select {
+    background-color: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 6px !important;
+    font-family: 'JetBrains Mono', monospace !important;
+}
+
+/* ── Metrics ── */
+[data-testid="stMetric"] {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+[data-testid="stMetricLabel"] {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+[data-testid="stMetricValue"] {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* ── Dataframe ── */
+.stDataFrame {
+    border: 1px solid var(--border) !important;
+    border-radius: 8px !important;
+}
+
+/* ── Info / Error boxes ── */
+.stAlert {
+    border-radius: 8px !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 0.85rem !important;
+}
+
+/* ── Download button ── */
+.stDownloadButton > button {
+    background: #0d2818 !important;
+    color: var(--green) !important;
+    border: 1px solid var(--green) !important;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #4b5563; }
+
+/* ── Expander ── */
+.streamlit-expanderHeader {
+    background: var(--bg-secondary) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 6px !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 0.8rem !important;
 }
